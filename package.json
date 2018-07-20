@@ -1,0 +1,8 @@
+{
+  "name": "fa-minify-core",
+  "description": "Core functions of the FA-Minify Library",
+  "authors": "NetWin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {}
+}
