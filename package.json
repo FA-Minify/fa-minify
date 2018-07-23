@@ -5,6 +5,10 @@
   "license": "MIT",
   "version": "1.0.1",
   "main": "index.js",
+  "keywords": [
+    "FontAwesome",
+    "Minify"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/FA-Minify/fa-minify"
