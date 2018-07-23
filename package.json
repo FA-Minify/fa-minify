@@ -2,7 +2,12 @@
   "name": "fa-minify",
   "description": "Core functions of the FA-Minify Library",
   "authors": "NetWin",
+  "license": "MIT",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FA-Minify/fa-minify"
+  },
   "dependencies": {}
 }
