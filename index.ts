@@ -1,10 +1,14 @@
-/**
- * 
- * @param {string} fileContent 
- * @param {{ usedIcons: {far?:string[], fas?:string[], fal?:string[], fab?:string[]}}} config 
- */
-module.exports = function (fileContent, config) {
-  config = config || {};
+
+export type IconType = 'far' | 'fas' | 'fal' | 'fab';
+
+export interface RemoveIconsConfig {
+  usedIcons: {
+    [type in IconType]?: string[];
+  }
+}
+
+export function removeUnusedIcons(fileContent: string, config: RemoveIconsConfig) {
+  config = config || { usedIcons: {} };
   const usedIcons = config.usedIcons || {};
 
   // fontawesoms all.js consists of n+1 functions where n=number of different icon styles (far,fas,fal,fab)
@@ -32,13 +36,13 @@ module.exports = function (fileContent, config) {
 
   // we search for the icons object, parse it and remove unused icons
   fileContent = fileContent.replace(/(var\s+icons\s*=)([\s\S.]*?)(;[\s\S.]*?define\('(fa.)', icons\);)/gmi, function () {
-    const icons = arguments[2];
-    const type = arguments[4];
+    const fileIcons = arguments[2] as string;
+    const type = arguments[4] as IconType;
 
     // parse the icons object read from the file content
     let iconObject = null;
     try {
-      iconObject = JSON.parse(icons)
+      iconObject = JSON.parse(fileIcons) as { [key: string]: any[] };
     } catch (e) {
       iconObject = {};
     }
@@ -46,7 +50,7 @@ module.exports = function (fileContent, config) {
     // keep usedIcons and remove every other icon
     if (usedIcons[type]) {
       Object.keys(iconObject).forEach(key => {
-        if (!usedIcons[type].includes(key)) {
+        if (usedIcons[type].indexOf(key) < 0) {
           delete iconObject[key];
         }
       });
@@ -58,3 +62,39 @@ module.exports = function (fileContent, config) {
 
   return fileContent;
 }
+
+export function getIcons(fileContent: string) {
+  const icons = {
+    far: [],
+    fal: [],
+    fas: [],
+    fab: []
+  };
+
+  // we search for the icons object, parse it and remove unused icons
+  fileContent = fileContent.replace(/(var\s+icons\s*=)([\s\S.]*?)(;[\s\S.]*?define\('(fa.)', icons\);)/gmi, function () {
+    const fileIcons = arguments[2];
+    const type = arguments[4] as IconType;
+
+    // parse the icons object read from the file content
+    let iconObject = null;
+    try {
+      iconObject = JSON.parse(fileIcons)
+    } catch (e) {
+      iconObject = {};
+    }
+
+    // add file icons to the icon object
+    if (icons[type]) {
+      Object.keys(iconObject).forEach(key => {
+        icons[type].push(key);
+      });
+    }
+
+    return '';
+  });
+
+
+  // return found icons
+  return icons;
+};
