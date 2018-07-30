@@ -1,11 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-function getIconsFromFile(fileContent) {
+function getIconNamesFromFile(fileContent) {
     const icons = {
-        fab: {},
-        fal: {},
-        far: {},
-        fas: {}
+        far: [],
+        fal: [],
+        fas: [],
+        fab: []
     };
     // we search for the icons object, parse it and remove unused icons
     fileContent = fileContent.replace(/(var\s+icons\s*=)([\s\S.]*?)(;[\s\S.]*?define\('(fa.)', icons\);)/gmi, function () {
@@ -22,7 +22,7 @@ function getIconsFromFile(fileContent) {
         // add file icons to the icon object
         if (icons[type]) {
             Object.keys(iconObject).forEach(key => {
-                icons[type][key] = iconObject[key];
+                icons[type].push(key);
             });
         }
         return '';
@@ -30,5 +30,5 @@ function getIconsFromFile(fileContent) {
     // return found icons
     return icons;
 }
-exports.getIconsFromFile = getIconsFromFile;
+exports.getIconNamesFromFile = getIconNamesFromFile;
 ;

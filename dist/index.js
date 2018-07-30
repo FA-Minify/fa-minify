@@ -5,3 +5,4 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(require("./remove-unused-icons"));
 __export(require("./get-icons-from-file"));
+__export(require("./get-icon-names-from-file"));

@@ -1,11 +1,11 @@
 import { IconType } from './types';
 
-export function getIconsFromFile(fileContent: string) {
-  const icons: { [type in IconType]: { [iconName: string]: any } } = {
-    fab: {},
-    fal: {},
-    far: {},
-    fas: {}
+export function getIconNamesFromFile(fileContent: string) {
+  const icons = {
+    far: <string[]>[],
+    fal: <string[]>[],
+    fas: <string[]>[],
+    fab: <string[]>[]
   };
 
   // we search for the icons object, parse it and remove unused icons
@@ -24,7 +24,7 @@ export function getIconsFromFile(fileContent: string) {
     // add file icons to the icon object
     if (icons[type]) {
       Object.keys(iconObject).forEach(key => {
-        icons[type][key] = iconObject[key];
+        icons[type].push(key);
       });
     }
 
