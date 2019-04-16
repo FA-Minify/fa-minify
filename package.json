@@ -3,7 +3,7 @@
   "description": "Core functions of the FA-Minify Library",
   "authors": "NetWin",
   "license": "MIT",
-  "version": "1.2.0",
+  "version": "5.8.1",
   "main": "dist/index.js",
   "keywords": [
     "FontAwesome",
