@@ -8,9 +8,9 @@ function getIconsFromFile(fileContent) {
         fas: {}
     };
     // we search for the icons object, parse it and remove unused icons
-    fileContent = fileContent.replace(/(var\s+icons\s*=)([\s\S.]*?)(;[\s\S.]*?define\('(fa.)', icons\);)/gmi, function () {
-        const fileIcons = arguments[2];
-        const type = arguments[4];
+    fileContent = fileContent.replace(/var\s*icons\s*=([\s\S.]*?);[\s\S.]*?'(fa.)'/gmi, function () {
+        const fileIcons = arguments[1];
+        const type = arguments[2];
         // parse the icons object read from the file content
         let iconObject = null;
         try {

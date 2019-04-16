@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const get_icons_from_file_1 = require("./get-icons-from-file");
 function getIconNamesFromFile(fileContent) {
     const icons = {
         far: [],
@@ -7,25 +8,11 @@ function getIconNamesFromFile(fileContent) {
         fas: [],
         fab: []
     };
-    // we search for the icons object, parse it and remove unused icons
-    fileContent = fileContent.replace(/(var\s+icons\s*=)([\s\S.]*?)(;[\s\S.]*?define\('(fa.)', icons\);)/gmi, function () {
-        const fileIcons = arguments[2];
-        const type = arguments[4];
-        // parse the icons object read from the file content
-        let iconObject = null;
-        try {
-            iconObject = JSON.parse(fileIcons);
-        }
-        catch (e) {
-            iconObject = {};
-        }
-        // add file icons to the icon object
-        if (icons[type]) {
-            Object.keys(iconObject).forEach(key => {
-                icons[type].push(key);
-            });
-        }
-        return '';
+    // read icons from file content
+    const fileIcons = get_icons_from_file_1.getIconsFromFile(fileContent);
+    // convert fileIcons into target structure
+    Object.keys(icons || {}).forEach(iconType => {
+        icons[iconType] = Object.keys(fileIcons[iconType] || {});
     });
     // return found icons
     return icons;

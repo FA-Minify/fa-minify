@@ -1,2 +1,6 @@
 node_modules/
 .vscode/
+dist/dev.js
+dist/dev.d.ts
+all.js
+all.cleared.js

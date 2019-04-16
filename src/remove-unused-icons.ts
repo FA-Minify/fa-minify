@@ -28,7 +28,7 @@ export function removeUnusedIcons(fileContent: string, config: RemoveIconsConfig
   });
 
   // we search for the icons object, parse it and remove unused icons
-  fileContent = fileContent.replace(/(var\s+icons\s*=)([\s\S.]*?)(;[\s\S.]*?define\('(fa.)', icons\);)/gmi, function () {
+  fileContent = fileContent.replace(/(var\s+icons\s*=)([\s\S.]*?)(;[\s\S.]*?defineIcons\('(fa.)', icons\);)/gmi, function () {
     const fileIcons = arguments[2] as string;
     const type = arguments[4] as IconType;
 
