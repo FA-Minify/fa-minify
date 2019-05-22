@@ -15,7 +15,7 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "pretest": "rimraf ./tests/**/*.spec.js && tsc -p ./tests",
+    "pretest": "rimraf ./src/**/*.js ./tests/**/*.js && tsc -p ./tests",
     "test": "jasmine ./tests/**/*.spec.js",
     "prepublish": "npm run clean && tsc"
   },
