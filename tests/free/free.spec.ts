@@ -23,7 +23,7 @@ describe('Fontawesome Free', function () {
 
 
   it('should remove icons', function () {
-    const before = getIconsFromFile(fileContent).far;
+    const before = getIconsFromFile(fileContent).fas;
 
     expect(before).toBeTruthy();
     expect(before.fas).toBeDefined();
