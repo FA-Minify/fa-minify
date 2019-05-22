@@ -15,18 +15,18 @@ describe('Fontawesome Free', function () {
 
     for (const iconType of ['fab', 'fas', 'far'/*, 'fal'*/]) {
       const iconsByType = icons[iconType];
-      expect(iconsByType).toBeDefined();
-      expect(Object.keys(iconsByType || {}).length).toBeGreaterThan(0, 'No Icons found for type: ' + iconType);
+      expect(iconsByType).toBeTruthy();
+      expect(Object.keys(iconsByType).length).toBeGreaterThan(0, 'No Icons found for type: ' + iconType);
     }
 
   });
 
 
   it('should remove icons', function () {
-    const before = getIconsFromFile(fileContent).fas;
+    const before = getIconsFromFile(fileContent);
 
     expect(before).toBeTruthy();
-    expect(before.fas).toBeDefined();
+    expect(before.fas).toBeTruthy();
 
     // expect to have more than one icon
     expect(Object.keys(before.fas).length).toBeGreaterThan(1);
@@ -42,7 +42,7 @@ describe('Fontawesome Free', function () {
     const after = getIconsFromFile(minifiedContent);
 
     expect(after).toBeTruthy();
-    expect(after.fas).toBeDefined();
+    expect(after.fas).toBeTruthy();
 
     // expect that we removed all but one icon
     expect(Object.keys(after.fas).length).toEqual(1);
