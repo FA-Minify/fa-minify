@@ -11,7 +11,7 @@ install:
   - npm i -g npm
   - npm ci
   - npm install @fortawesome/fontawesome-pro
-#  - npm install @fortawesome/fontawesome-free
+  - npm install @fortawesome/fontawesome-free
 
 script:
   - npm test
