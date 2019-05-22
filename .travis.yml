@@ -3,7 +3,6 @@ dist: trusty
 node_js:
   - "node"
 
-
 before_install:
   - npm config set "@fortawesome:registry" https://npm.fontawesome.com/
   - npm config set "//npm.fontawesome.com/:_authToken" $FA_NPM_TOKEN
@@ -12,8 +11,7 @@ install:
   - npm i -g npm
   - npm ci
   - npm install @fortawesome/fontawesome-pro
-  - npm install @fortawesome/fontawesome-free
+#  - npm install @fortawesome/fontawesome-free
 
 script:
-  - npm run test:travis
-  - ls ./node_modules/@fortawesome
+  - npm test
