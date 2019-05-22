@@ -1,4 +1,3 @@
-**Travis**    
 [![Build Status](https://travis-ci.org/FA-Minify/fa-minify.svg?branch=master)](https://travis-ci.org/FA-Minify/fa-minify)
 
 
