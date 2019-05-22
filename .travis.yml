@@ -12,7 +12,3 @@ install:
 script:
 - npm run test:travis
 - ls ./node_modules/@fortawesome
-
-branches:
-  only:
-  - feature/travis
