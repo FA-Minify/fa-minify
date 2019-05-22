@@ -1,5 +1,7 @@
 language: node_js
 dist: trusty
+node_js:
+  - "node"
 
 
 before_install:
@@ -7,6 +9,7 @@ before_install:
   - npm config set "//npm.fontawesome.com/:_authToken" $FA_NPM_TOKEN
 
 install:
+  - npm i -g npm
   - npm ci
   - npm install @fortawesome/fontawesome-pro
   - npm install @fortawesome/fontawesome-free
