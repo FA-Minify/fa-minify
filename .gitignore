@@ -1,4 +1,5 @@
 node_modules/
+tests/**/*.js
 .vscode/
 dist/dev.js
 dist/dev.d.ts

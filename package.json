@@ -15,12 +15,14 @@
   },
   "scripts": {
     "clean": "rimraf dist",
+    "pretest": "rimraf ./tests/**/*.spec.js && tsc -p ./tests",
     "test": "jasmine ./tests/**/*.spec.js",
     "prepublish": "npm run clean && tsc"
   },
   "dependencies": {},
   "devDependencies": {
     "@types/node": "12.0.2",
+    "@types/jasmine": "3.3.12",
     "jasmine": "3.4.0",
     "rimraf": "2.6.3",
     "typescript": "3.4.5"
