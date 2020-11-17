@@ -2,11 +2,10 @@ import * as fs from 'fs';
 
 import { getIconsFromFile } from '../../src/get-icons-from-file';
 import { removeUnusedIcons } from '../../src/remove-unused-icons';
-
+import { FREE_PATH } from '../constants';
 
 describe('Fontawesome Free', function () {
-  const allJSPath = './node_modules/@fortawesome/fontawesome-free/js/all.js';
-  const fileContent = fs.readFileSync(allJSPath, 'utf-8').toString();
+  const fileContent = fs.readFileSync(FREE_PATH, 'utf-8').toString();
 
   it('should be parseable', function () {
     const icons = getIconsFromFile(fileContent);

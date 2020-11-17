@@ -16,7 +16,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "pretest": "rimraf ./src/**/*.js ./tests/**/*.js && tsc -p ./tests",
-    "test": "jasmine ./tests/**/*.spec.js",
+    "test": "jasmine ./tests/**/free/*.spec.js",
     "prepublish": "npm run clean && tsc"
   },
   "dependencies": {},
