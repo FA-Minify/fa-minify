@@ -1,8 +1,2 @@
 node_modules/
-tests/**/*.js
-src/**/*.js
 .vscode/
-dist/dev.js
-dist/dev.d.ts
-all.js
-all.cleared.js
