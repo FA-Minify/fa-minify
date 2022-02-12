@@ -10,7 +10,7 @@ export function removeUnusedIcons(fileContent: string, config: RemoveIconsConfig
 
     // get the type ('far'/'fas'/'fal'/'fab') from function
     const matches = /\('(fa.)',/gi.exec(arguments[1]) || [];
-    const type = matches[1];
+    const type = matches[1] as IconType;
 
     // no type means this function is the bootstrap function
     // keep it
@@ -18,7 +18,7 @@ export function removeUnusedIcons(fileContent: string, config: RemoveIconsConfig
       return func;
     }
 
-    if (usedIcons[type] && usedIcons[type].length > 0) {
+    if (usedIcons[type] && usedIcons[type]?.length) {
       // we use some icons from this type so we keep this function
       return func;
     }
@@ -33,7 +33,7 @@ export function removeUnusedIcons(fileContent: string, config: RemoveIconsConfig
     const type = arguments[4] as IconType;
 
     // parse the icons object read from the file content
-    let iconObject = null;
+    let iconObject: Record<string, unknown> = {};
     try {
       iconObject = JSON.parse(fileIcons) as { [key: string]: any[] };
     } catch (e) {
@@ -41,9 +41,9 @@ export function removeUnusedIcons(fileContent: string, config: RemoveIconsConfig
     }
 
     // keep usedIcons and remove every other icon
-    if (usedIcons[type]) {
+    if (usedIcons[type]?.length) {
       Object.keys(iconObject).forEach(key => {
-        if (usedIcons[type].indexOf(key) < 0) {
+        if (usedIcons[type]!.indexOf(key) < 0) {
           delete iconObject[key];
         }
       });

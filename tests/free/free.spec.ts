@@ -2,6 +2,7 @@ import * as fs from 'fs';
 
 import { getIconsFromFile } from '../../src/get-icons-from-file';
 import { removeUnusedIcons } from '../../src/remove-unused-icons';
+import { IconType } from '../../src/types';
 import { FREE_PATH } from '../constants';
 
 describe('Fontawesome Free', function () {
@@ -11,11 +12,11 @@ describe('Fontawesome Free', function () {
     const icons = getIconsFromFile(fileContent);
 
     expect(icons).toBeTruthy();
-
-    for (const iconType of ['fab', 'fas', 'far'/*, 'fal'*/]) {
+    const types: Array<IconType> = ['fab', 'fas', 'far'/*, 'fal'*/];
+    for (const iconType of types) {
       const iconsByType = icons[iconType];
       expect(iconsByType).toBeTruthy();
-      expect(Object.keys(iconsByType).length).toBeGreaterThan(0, 'No Icons found for type: ' + iconType);
+      expect(Object.keys(iconsByType).length).toBeGreaterThan(0);
     }
 
   });

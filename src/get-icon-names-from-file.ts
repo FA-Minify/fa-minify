@@ -14,7 +14,7 @@ export function getIconNamesFromFile(fileContent: string) {
 
   // convert fileIcons into target structure
   Object.keys(icons || {}).forEach(iconType => {
-    icons[iconType] = Object.keys(fileIcons[iconType] || {});
+    icons[iconType as IconType] = Object.keys(fileIcons[iconType as IconType] || {});
   });
 
   // return found icons

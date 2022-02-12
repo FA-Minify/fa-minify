@@ -1,7 +1,7 @@
 import { IconType } from './types';
 
 export function getIconsFromFile(fileContent: string) {
-  const icons: { [type in IconType]: { [iconName: string]: any } } = {
+  const icons: Record<IconType, Record<string, string>> = {
     fab: {},
     fal: {},
     far: {},
@@ -14,7 +14,7 @@ export function getIconsFromFile(fileContent: string) {
     const type = arguments[2] as IconType;
 
     // parse the icons object read from the file content
-    let iconObject = null;
+    let iconObject: Record<string, string> = {};
     try {
       iconObject = JSON.parse(fileIcons);
     } catch (e) {
@@ -22,7 +22,7 @@ export function getIconsFromFile(fileContent: string) {
     }
 
     // add file icons to the icon object
-    if (icons[type]) {
+    if (icons[type] && iconObject) {
       Object.keys(iconObject).forEach(key => {
         icons[type][key] = iconObject[key];
       });
