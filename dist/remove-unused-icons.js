@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.removeUnusedIcons = void 0;
 function removeUnusedIcons(fileContent, config) {
     config = config || { usedIcons: {} };
     const usedIcons = config.usedIcons || {};

@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.getIconsFromFile = void 0;
 function getIconsFromFile(fileContent) {
     const icons = {
         fab: {},
