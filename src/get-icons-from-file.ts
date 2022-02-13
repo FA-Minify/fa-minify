@@ -5,7 +5,8 @@ export function getIconsFromFile(fileContent: string) {
     fab: {},
     fal: {},
     far: {},
-    fas: {}
+    fas: {},
+    fat: {}
   };
 
   // we search for the icons object, parse it and remove unused icons

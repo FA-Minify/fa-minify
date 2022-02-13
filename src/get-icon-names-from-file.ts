@@ -2,11 +2,12 @@ import { IconType } from './types';
 import { getIconsFromFile } from './get-icons-from-file';
 
 export function getIconNamesFromFile(fileContent: string) {
-  const icons = {
-    far: <string[]>[],
-    fal: <string[]>[],
-    fas: <string[]>[],
-    fab: <string[]>[]
+  const icons: Record<IconType, Array<string>> = {
+    fab: [],
+    fal: [],
+    far: [],
+    fas: [],
+    fat: []
   };
 
   // read icons from file content
