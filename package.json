@@ -3,7 +3,7 @@
   "description": "Core functions of the FA-Minify Library",
   "authors": "NetWin",
   "license": "MIT",
-  "version": "6.0.0-rc.1",
+  "version": "6.0.0-rc.2",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "keywords": [
