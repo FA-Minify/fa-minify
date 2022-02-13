@@ -14,11 +14,14 @@
     "type": "git",
     "url": "https://github.com/FA-Minify/fa-minify"
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "clean": "rimraf dist",
     "test": "jest",
     "build": "npm run clean && rollup -c",
-    "prepublishOnly": "npm run clean && npm run build"
+    "prepublish": "npm run clean && npm run build"
   },
   "dependencies": {},
   "devDependencies": {
