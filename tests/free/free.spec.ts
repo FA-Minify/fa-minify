@@ -12,7 +12,7 @@ describe('Fontawesome Free', function () {
     const icons = getIconsFromFile(fileContent);
 
     expect(icons).toBeTruthy();
-    const types: Array<IconType> = ['fab', 'fas', 'far'/*, 'fal'*/];
+    const types: Array<IconType> = ['fab', 'fas', 'far'/*, 'fal'*/]; // There is no `fal` in the free version
     for (const iconType of types) {
       const iconsByType = icons[iconType];
       expect(iconsByType).toBeTruthy();

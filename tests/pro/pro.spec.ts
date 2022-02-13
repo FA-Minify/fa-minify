@@ -13,7 +13,7 @@ describe('Fontawesome Pro', function () {
 
     expect(icons).toBeTruthy();
 
-    const types: Array<IconType> = ['fab', 'fas', 'far'/*, 'fal'*/];
+    const types: Array<IconType> = ['fab', 'fas', 'far', 'fal'];
     for (const iconType of types) {
       const iconsByType = icons[iconType];
       expect(iconsByType).toBeTruthy();
