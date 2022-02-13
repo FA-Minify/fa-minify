@@ -5,11 +5,10 @@ export function removeUnusedIcons(fileContent: string, config: RemoveIconsConfig
   const usedIcons = config.usedIcons || {};
 
   // fontawesoms all.js consists of n+1 functions where n=number of different icon styles (far,fas,fal,fab)
-  fileContent = fileContent.replace(/(\(function\s*\(\)\s*\{[\s\S.]*?}\(\)\);)/gim, function () {
-    const func = arguments[1];
+  fileContent = fileContent.replace(/(\(function\s*\(\)\s*\{[\s\S.]*?}\(\)\);)/gim, function (func) {
 
     // get the type ('far'/'fas'/'fal'/'fab') from function
-    const matches = /\('(fa.)',/gi.exec(arguments[1]) || [];
+    const matches = /defineIcons\('(fa.)',/gi.exec(func) || [];
     const type = matches[1] as IconType;
 
     // no type means this function is the bootstrap function
