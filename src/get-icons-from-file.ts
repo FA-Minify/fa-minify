@@ -1,7 +1,7 @@
-import { IconType } from './types';
+import { FileIconFormat, IconType } from './types';
 
-export function getIconsFromFile(fileContent: string) {
-  const icons: Record<IconType, Record<string, string>> = {
+export function getIconsFromFile(fileContent: string): Record<IconType, Record<string, FileIconFormat>> {
+  const icons: Record<IconType, Record<string, FileIconFormat>> = {
     fab: {},
     fal: {},
     far: {},
@@ -15,7 +15,7 @@ export function getIconsFromFile(fileContent: string) {
     const type = arguments[2] as IconType;
 
     // parse the icons object read from the file content
-    let iconObject: Record<string, string> = {};
+    let iconObject: Record<string, FileIconFormat> = {};
     try {
       iconObject = JSON.parse(fileIcons);
     } catch (e) {
